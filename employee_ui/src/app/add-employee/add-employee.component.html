@@ -1,0 +1,64 @@
+<h3>Create Employee</h3>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4" >
+    <div [hidden]="submitted" style="width: 400px;">
+      <form [formGroup]="employeesaveform" #saveemployee (ngSubmit)="saveemployee(saveemployee)">
+          <div class="form-group">
+              <label for="name">Employee Name</label>
+              <input type="text" class="form-control"  formControlName="employee_name" data-toggle="tooltip" 
+                 data-placement="right" title="Enter employee Name" >
+              <div class="alert alert-danger" *ngIf = "(employeeName.touched) && (employeeName.invalid)" 
+                style="margin-top: 5px;">
+                  <span *ngIf="employeeName.errors.required">employee Name is Required</span>
+                    <span *ngIf = "employeeName.errors.minlength"> 
+                        MinLength Error 
+                    </span>                   
+                </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="name">Employee type</label>
+              <input type="text" class="form-control" formControlName="employee_type" 
+                data-toggle="tooltip" data-placement="right" title="Enter employee type">
+                <div class="alert alert-danger" *ngIf = "(employeetype.touched) && (employeetype.invalid)" 
+                style="margin-top: 5px;">
+                  <span *ngIf="employeetype.errors.required">employee type is Required</span>
+                    <span *ngIf = "employeetype.errors.type"> 
+                        Invalid type Format 
+                    </span>                   
+                </div>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Employee vacation</label>
+            <input type="text" class="form-control" formControlName="employee_vacation" 
+              data-toggle="tooltip" data-placement="right" title="Enter employee vacation">
+              <div class="alert alert-danger" *ngIf = "(employeevacation.touched) && (employeevacation.invalid)" 
+              style="margin-top: 5px;">
+                <span *ngIf="employeevacation.errors.required">employee vacation is Required</span>
+                  <span *ngIf = "employeevacation.errors.type"> 
+                      Invalid vacation Format 
+                  </span>                   
+              </div>
+        </div>
+         
+  
+          <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+  </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+      <div [hidden]="!submitted">
+         <h4>employee Added SuccessFully!</h4>
+         <button (click)="addemployeeForm()" class='btn btn-primary'>Add More employee</button>
+      </div>      
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+
